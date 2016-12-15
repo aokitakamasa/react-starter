@@ -9,12 +9,17 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
+  devtool: 'cheap-module-eval-source-map',
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders:[]
+        loaders:["babel-loader"]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]
       }
     ],
   },
